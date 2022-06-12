@@ -1,0 +1,303 @@
+﻿
+body,
+html {
+    background-color: #555555;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    position: relative;
+    background-color: #555555;
+    left: 0;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2147483647;
+}
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: maroon;
+            color: white;
+        }
+
+.dropdown {
+    position: absolute;
+    width: 100%;
+    color: white;
+    background-color: #555555;
+    text-align: center;
+    top: 2%;
+}
+
+    .dropdown h1 {
+        position: static;
+        font-size: 50px;
+    }
+
+    .dropdown p {
+        position: static;
+        font-size: 16px;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .dropdown img {
+        position: static;
+    }
+
+.middle {
+    position: relative;
+    top: 2%;
+    left: 0;
+    width: 100%;
+    background-color: #555555;
+    text-align: center;
+    color: white;
+}
+
+    .middle img {
+        position: static;
+        z-index: -1;
+        top: 0%;
+        left: 0%;
+        max-width: 90%;
+        height: auto;
+    }
+
+    .middle h1 {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%);
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .middle pTop {
+        position: absolute;
+        top: 5%;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .middle pMid {
+        position: absolute;
+        top: 10%;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .middle pMid2 {
+        position: absolute;
+        top: 15%;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .middle pBottom {
+        position: absolute;
+        bottom: 5%;
+        font-size: 14px;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: left;
+    }
+
+.about {
+    position: absolute;
+    top: 2%;
+    left: 0%;
+    width: 100%;
+    color: black;
+    text-shadow: 0px 0px 7px white;
+    background-color: #ffffff;
+}
+
+
+    .about img {
+        position: absolute;
+        z-index: 1;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+    }
+
+    .about p {
+        position: static;
+        z-index: 2;
+        font-size: 20px;
+        text-align: left;
+        opacity: 1;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .about h1 {
+        position: static;
+        z-index: 2;
+        font-size: 50px;
+        text-align: center;
+        opacity: 1;
+    }
+
+    .about h2 {
+        position: static;
+        z-index: 2;
+        font-size: 24px;
+        text-align: center;
+        opacity: 1;
+    }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+/*@media only screen and (max-width: 600px) {
+    .dropdown canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 400px !important;
+    }
+
+    .middle img {
+        position: static;
+        max-width: 100%;
+        height: auto;
+        border: hidden;
+        background-color: #555555;
+    }
+}*/
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/*@media only screen and (min-width: 600px) {
+    .dropdown canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 500px !important;
+    }
+
+    .middle img {
+        position: static;
+        width: 500px;
+        height: 281px;
+        border: hidden;
+        background-color: #555555;
+    }
+}*/
+
+/* Medium devices (landscape tablets, 768px and up) */
+/*@media only screen and (min-width: 768px) {
+    .dropdown canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 668px !important;
+    }
+
+    .middle img {
+        position: static;
+        width: 668px;
+        height: 375px;
+        border: hidden;
+        background-color: #555555;
+    }
+}*/
+
+/* Large devices (laptops/desktops, 992px and up) */
+/*@media only screen and (min-width: 992px) {
+    .dropdown canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 892px !important;
+    }
+
+    .middle img {
+        position: static;
+        width: 892px;
+        height: 501px;
+        border: hidden;
+        background-color: #555555;
+    }
+}*/
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/*@media only screen and (min-width: 1200px) {
+    .dropdown canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 1100px !important;
+    }
+
+    .middle img {
+        position: static;
+        width: 1100px;
+        height: 618px;
+        border: hidden;
+        background-color: #555555;
+    }
+}*/
+
+/* Extra Extra large devices (large laptops and desktops, 1900px and up) */
+/*@media only screen and (min-width: 1900px) {
+    .dropdown canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 1280px !important;
+    }
+
+    .middle img {
+        position: static;
+        width: 1280px;
+        height: 720px;
+        border: hidden;
+        background-color: #555555;
+    }
+}*/

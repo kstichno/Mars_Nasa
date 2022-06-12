@@ -1,0 +1,35 @@
+﻿@model MarsNasa.Models.ImageOfTheDay
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" type="text/css" href="./css/site.css">
+    <title>Aquarium Guide</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topnav">
+            <a class="active" href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+        </div>
+        <div class="middle">
+            <h1>NASA Image of the Day</h1>
+            <pTop>@Model.title</pTop>
+            <pMid>Date: @Model.date </pMid> 
+            <pMid2>Copyright: @Model.copyright</pMid2>
+            <pBottom>Description: @Model.explanation </pBottom>
+            <img src=@Model.hdurl>
+        </div>
+        <div class="footer">USF MSBAIS, 2022.</div>
+    </div>
+</body>
+
+</html>
