@@ -1,0 +1,62 @@
+﻿@model MarsNasa.Models.ImageOfTheDay
+@{
+    ViewData["Title"] = "Astronomy Picture of the Day";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" type="text/css" href="./css/site.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="topnav">
+            @Html.ActionLink("Home", "index", "Home")
+            <a class="active">Astronomy Picture of the Day</a>
+        </div>
+        <div class="middle">
+            <info>
+                <label for="title">Select A Previous Day's Image</label>
+                <br />
+
+                @using (Html.BeginForm("APOD", "ImageOfDay", FormMethod.Post, new { @name = "Form1" }))
+                {
+                    @Html.DropDownList("Id", new SelectList(Model.Titles, "Id", "Name"), "Please select", new { @id = "ddlTitles" })
+                    @Html.Hidden("Name", null, new { @id = "hfTitleName" })    
+                }
+
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript">
+                $("body").on("change", "#ddlTitles", function () {
+                $("#hfTitleName").val($(this).find("option:selected").text());
+                document.forms["Form1"].submit();
+                });
+                </script>
+                @if (TempData["Message"] != null)
+                {
+                    <script type="text/javascript">
+                        $(function () {
+                            alert("@TempData["Message"]");
+                        });
+                    </script>
+                }
+                
+                <br /> <br />
+                Title: @Model.title <br /> <br /> 
+                Date: @Model.date <br /> <br />
+                Copyright ©: @Model.copyright <br /> <br />
+                Description: @Model.explanation
+            </info>
+        </div>
+    </div>
+    <img src=@Model.hdurl>
+    <div class="footer">USF MSBAIS, 2022.</div>
+    
+</body>
+
+</html>

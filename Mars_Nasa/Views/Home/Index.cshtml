@@ -1,6 +1,6 @@
 ﻿@model MarsNasa.Models.ImageOfTheDay
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Astronomy Picture of the Day";
 }
 
 <!DOCTYPE html>
@@ -11,22 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
     <link rel="stylesheet" type="text/css" href="./css/site.css">
-    <title>The Daily NASA</title>
 </head>
 
 <body>
     <div class="container">
         <div class="topnav">
-            <a class="active" href="./index.html">Home</a>
-            <a href="./about.html">About</a>
-        </div>
-        <div class="middle">
-            <h1>NASA Image of the Day</h1>
-            <pTop>@Model.title</pTop>
-            <pMid>Date: @Model.date </pMid> 
-            <pMid2>Copyright: @Model.copyright</pMid2>
-            <pBottom>Description: @Model.explanation </pBottom>
-            <img src=@Model.hdurl>
+            <a class="active">Home</a>
+            @Html.ActionLink("Astronomy Picture of the Day", "apod", "ImageOfDay")
         </div>
         <div class="footer">USF MSBAIS, 2022.</div>
     </div>
