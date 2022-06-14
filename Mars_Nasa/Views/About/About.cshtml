@@ -15,13 +15,12 @@
 <body>
     <div class="container">
         <div class="topnav">
-            <a class="active">Home</a>
+            @Html.ActionLink("Home", "Index", "Home")
             @Html.ActionLink("Astronomy Picture of the Day", "apod", "ImageOfDay")
-            @Html.ActionLink("About", "About", "About")
+            <a class="active">About</a>
         </div>
+        <div class="footer">USF MSBAIS, 2022.</div>
     </div>
-    <div class="footer">USF MSBAIS, 2022.</div>
-    
 </body>
 
 </html>

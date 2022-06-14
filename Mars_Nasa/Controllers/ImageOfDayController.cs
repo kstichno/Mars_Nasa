@@ -67,6 +67,16 @@ namespace MarsNasa.Controllers
             return View(image);
         }
 
+        public ActionResult Home()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult APOD(IFormCollection formcollection)
         {
