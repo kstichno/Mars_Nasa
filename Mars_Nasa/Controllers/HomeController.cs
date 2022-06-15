@@ -26,6 +26,11 @@ namespace MarsNasa.Controllers
             return View();
         }
 
+        public ActionResult Weather()
+        {
+            return View();
+        }
+
     }
 }
 

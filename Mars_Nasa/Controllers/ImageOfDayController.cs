@@ -77,6 +77,11 @@ namespace MarsNasa.Controllers
             return View();
         }
 
+        public ActionResult Weather()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult APOD(IFormCollection formcollection)
         {

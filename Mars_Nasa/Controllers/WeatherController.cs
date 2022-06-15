@@ -2,8 +2,13 @@
 
 namespace MarsNasa.Controllers
 {
-    public class AboutController : Controller
+    public class WeatherController : Controller
     {
+        public IActionResult Weather()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();
@@ -15,11 +20,6 @@ namespace MarsNasa.Controllers
         }
 
         public ActionResult Home()
-        {
-            return View();
-        }
-
-        public ActionResult Weather()
         {
             return View();
         }
