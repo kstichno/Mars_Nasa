@@ -7,16 +7,12 @@
 
   <ItemGroup>
     <Compile Remove="Infrastructure\**" />
-    <Compile Remove="wwwroot\img\**" />
     <Compile Remove="wwwroot\lib\**" />
     <Content Remove="Infrastructure\**" />
-    <Content Remove="wwwroot\img\**" />
     <Content Remove="wwwroot\lib\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="wwwroot\img\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
     <None Remove="Infrastructure\**" />
-    <None Remove="wwwroot\img\**" />
     <None Remove="wwwroot\lib\**" />
   </ItemGroup>
 
@@ -24,6 +20,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\ninja kittens in space.png" />
   </ItemGroup>
 
 </Project>
