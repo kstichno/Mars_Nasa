@@ -8,5 +8,7 @@ namespace MarsNasa.DataAccess
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<ImageOfTheDay> Image { get; set; }
+
+    public DbSet<Weather> Weather { get; set; }
   }
 }

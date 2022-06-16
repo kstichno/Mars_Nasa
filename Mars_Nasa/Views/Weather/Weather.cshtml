@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ChartModel
+@{
     ViewData["Title"] = "Mars Weather";
 }
 
@@ -23,7 +24,51 @@
         <div style="text-align: center;">
             <br /> <br /> <br />
             <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0' width='1024' height='600'></iframe>
+            <br /> <br />
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <canvas id="line-chart"></canvas>
+        <br /> <br />  <br />
+        <script>
+        Chart.defaults.global.defaultFontColor = 'white';
+        new Chart(document.getElementById("line-chart"), {
+            type: '@Model.ChartType',
+                data: {
+                labels: [@Html.Raw(@Model.XLabels)],
+                datasets: [{
+                    label: "Low Temperature",
+                    borderColor: "#3e95cd",
+                    data: [@Model.DataMin],
+                    fill: false,
+                }, {
+                    label: "High Temperature",
+                    borderColor: "#c45850",
+                    data: [@Model.DataMax],
+                    fill: false,
+                }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '@Model.Title'
+                },
+                responsive: false,
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Degrees Celcius'
+                        },
+                        ticks: {
+                            Min: -100,
+                            Max: 0
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
         <div class="footer">USF MSBAIS, 2022.</div>
     </div>
 </body>

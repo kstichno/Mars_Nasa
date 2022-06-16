@@ -20,6 +20,13 @@ img {
     transform: translate(-50%, -50%);
 }
 
+canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 1024px !important;
+}
+
 .topnav {
     background-color: #333;
     overflow: hidden;

@@ -31,38 +31,41 @@ namespace MarsNasa.Controllers
         public async Task<IActionResult> APOD()
         {
             ImageOfTheDay image = null;
-            httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            var date = DateTime.Today.ToString("yyyy-MM-dd");
-            string url = BASE_URL + date + API_KEY;
-            string apiStr = "";
 
-            httpClient.BaseAddress = new Uri(url);
-
-            try
+            for (int i = -10; i <= 0; i++)
             {
-                HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
+                httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                var date = DateTime.Today.AddDays(i).ToString("yyyy-MM-dd");
+                string url = BASE_URL + date + API_KEY;
+                string apiStr = "";
 
-                if (response.IsSuccessStatusCode)
+                httpClient.BaseAddress = new Uri(url);
+
+                try
                 {
-                    apiStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                }
+                    HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
 
-                if (!apiStr.Equals(string.Empty))
+                    if (response.IsSuccessStatusCode)
+                    {
+                        apiStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    }
+
+                    if (!apiStr.Equals(string.Empty))
+                    {
+                        // JsonConvert is part of the NewtonSoft.Json Nuget package
+                        image = JsonConvert.DeserializeObject<ImageOfTheDay>(apiStr);
+                        dbContext.Image.Add(image);
+                        await dbContext.SaveChangesAsync();
+                    }
+
+                }
+                catch (Exception e)
                 {
-                    // JsonConvert is part of the NewtonSoft.Json Nuget package
-                    image = JsonConvert.DeserializeObject<ImageOfTheDay>(apiStr);
-                    dbContext.Image.Add(image);
-                    await dbContext.SaveChangesAsync();
+                    // This is a useful place to insert a breakpoint and observe the error message
+                    Console.WriteLine(e.Message);
                 }
-
             }
-            catch (Exception e)
-            {
-                // This is a useful place to insert a breakpoint and observe the error message
-                Console.WriteLine(e.Message);
-            }
-
             GetTitles(image, dbContext);
             return View(image);
         }
