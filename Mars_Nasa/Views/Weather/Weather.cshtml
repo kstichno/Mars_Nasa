@@ -21,79 +21,79 @@
             @Html.ActionLink("EpicEarth", "EpicEarth","EpicEarth")
             @Html.ActionLink("About", "About", "About")
         </div>
-        <br /><br /><br />
-        <div class="grid-container">
-            <div class="grid-child">
-                <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0' width='900' height='600'></iframe>
-            </div>
-            <div class="grid-child">
+        <br/><br/><br/>
+        <p align="center">
+            <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0' width='950' height='550'></iframe>
+            <br/><br/>
+            <div style="text-align:center;">
                 @using (Html.BeginForm("Weather", "Weather", FormMethod.Post))
                 {
-                    <label for="datepicker" style="color:white; font-family: Arial, Helvetica, sans-serif; font-size:16px;">Historical Date Lookup:</label>
+                    <label for="datepicker" style="color:white; font-family: Arial, Helvetica, sans-serif; font-size:16px;">Historical Weather Lookup:</label>
                     @Html.EditorFor(model => model.DateData, new { htmlAttributes = new { @class = "datepicker" } })
                     <input type="submit" value="Submit"/>
                     <span style="color:white; padding-left:10px; font-family: Arial, Helvetica, sans-serif; font-size:16px;">
-                        Min: @Model.min_temp  |  Max: @Model.max_temp  |  Sunrise: @Model.sunrise  |  Sunset: @Model.sunset  |  Season: @Model.season
+                        Min: @Model.min_temp C&deg;  |  Max: @Model.max_temp C&deg;  |  Sunrise: @Model.sunrise  |  Sunset: @Model.sunset  |  Season: @Model.season
                     </span>
                 }
-                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-                <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-                <script>
-                    $(function ()
-                    {
-                        $(".datepicker").datepicker({
-                            dateFormat: "YYYY-MM-DD",
-                            changeMonth: true,
-                            changeYear: true,
-                            minDate: new Date(2012, 8, 7),
-                            maxDate: new Date(2022, 3, 24),
-                        });
-                    });
-                </script>
-                <canvas id="line-chart"></canvas>
             </div>
-        </div>
-        <br /><br /><br />
-        <script>
-        Chart.defaults.global.defaultFontColor = 'white';
-        new Chart(document.getElementById("line-chart"), {
-            type: '@Model.ChartModel.ChartType',
-                data: {
-                labels: [@Html.Raw(@Model.ChartModel.XLabels)],
-                datasets: [{
-                    label: "Low Temperature",
-                    borderColor: "#3e95cd",
-                    data: [@Model.ChartModel.DataMin],
-                    fill: false,
-                }, {
-                    label: "High Temperature",
-                    borderColor: "#c45850",
-                    data: [@Model.ChartModel.DataMax],
-                    fill: false,
-                }
-                ]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: '@Model.ChartModel.Title'
+            <br/>
+            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+            <script>
+                $(document).ready(function () {
+                {
+                    $(".datepicker").datepicker({
+                        format: 'YYYY-MM-DD',
+                        useCurrent: false,
+                        showClose: true,
+                        minDate: new Date('08/07/2012'),
+                        maxDate: new Date('03/24/2022'),
+                    });
+                });
+            </script>
+            <canvas id="line-chart"></canvas>
+            <br/><br/><br/>
+            <script>
+            Chart.defaults.global.defaultFontColor = 'white';
+            new Chart(document.getElementById("line-chart"), {
+                type: '@Model.ChartModel.ChartType',
+                    data: {
+                    labels: [@Html.Raw(@Model.ChartModel.XLabels)],
+                    datasets: [{
+                        label: "Low Temperature",
+                        borderColor: "#3e95cd",
+                        data: [@Model.ChartModel.DataMin],
+                        fill: false,
+                    }, {
+                        label: "High Temperature",
+                        borderColor: "#c45850",
+                        data: [@Model.ChartModel.DataMax],
+                        fill: false,
+                    }
+                    ]
                 },
-                responsive: false,
-                scales: {
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Degrees Celcius'
-                        },
-                        ticks: {
-                            Min: -100,
-                            Max: 0
-                        }
-                    }]
+                options: {
+                    title: {
+                        display: true,
+                        text: '@Model.ChartModel.Title'
+                    },
+                    responsive: false,
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Degrees Celcius'
+                            },
+                            ticks: {
+                                Min: -100,
+                                Max: 0
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-        </script>
+            });
+            </script>
+        </p>
         <div class="footer">USF MSBAIS, 2022.</div>
     </div>
 </body>

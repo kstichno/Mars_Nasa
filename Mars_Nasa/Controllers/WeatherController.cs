@@ -24,12 +24,35 @@ namespace MarsNasa.Controllers
             dbContext = context;
         }
 
-        public async Task<IActionResult> Weather()
+        public ActionResult Weather()
         {
             Weather weather = new();
-            weather = dbContext.Weather
-                                   .Where(i => i.sol == int.Parse(days[0]))
-                                   .First();
+            string url = BASE_URL;
+            string apiStr = "";
+
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.BaseAddress = new Uri(url);
+
+            try
+            {
+                HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    apiStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                }
+
+                if (!apiStr.Equals(string.Empty))
+                {
+                    weather = JsonConvert.DeserializeObject<Weather>(apiStr);
+                }
+            }
+            catch (Exception e)
+            {
+                // This is a useful place to insert a breakpoint and observe the error message
+                Console.WriteLine(e.Message);
+            }
             weather.W = (from s in dbContext.Weather.AsEnumerable()
                                 select new WeatherInfo
                                 {
@@ -70,7 +93,7 @@ namespace MarsNasa.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Weather(Weather objModel)
+        public ActionResult Weather(Weather objModel)
         {
             Weather weather = new();
             TimeSpan difference =  objModel.DateData - DateTime.Parse("2012-08-07");

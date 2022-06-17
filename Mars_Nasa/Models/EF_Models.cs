@@ -52,6 +52,7 @@ namespace MarsNasa.Models
         public List<WeatherInfo> W { get; set; }
 
         [NotMapped]
+        [DataType(DataType.Date)]
         public DateTime DateData {get; set;}
 
         [NotMapped]

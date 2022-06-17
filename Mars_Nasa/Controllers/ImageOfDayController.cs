@@ -18,7 +18,7 @@ namespace MarsNasa.Controllers
     {
         HttpClient httpClient;
 
-        static string BASE_URL = "https://api.nasa.gov/planetary/apod?date=";
+        static string BASE_URL = "https://api.nasa.gov/planetary/apod?";
         static string API_KEY = "&api_key=ldD32JgpHGnzPJyxRttoohWCJw7xOM4nNMBK3A0Q";
 
         public ApplicationDbContext dbContext;
@@ -32,39 +32,35 @@ namespace MarsNasa.Controllers
         {
             ImageOfTheDay image = null;
 
-            for (int i = -10; i <= 0; i++)
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            string url = BASE_URL + API_KEY;
+            string apiStr = "";
+
+            httpClient.BaseAddress = new Uri(url);
+
+            try
             {
-                httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Accept.Clear();
-                var date = DateTime.Today.AddDays(i).ToString("yyyy-MM-dd");
-                string url = BASE_URL + date + API_KEY;
-                string apiStr = "";
+                HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
 
-                httpClient.BaseAddress = new Uri(url);
-
-                try
+                if (response.IsSuccessStatusCode)
                 {
-                    HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        apiStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    }
-
-                    if (!apiStr.Equals(string.Empty))
-                    {
-                        // JsonConvert is part of the NewtonSoft.Json Nuget package
-                        image = JsonConvert.DeserializeObject<ImageOfTheDay>(apiStr);
-                        dbContext.Image.Add(image);
-                        await dbContext.SaveChangesAsync();
-                    }
-
+                    apiStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 }
-                catch (Exception e)
+
+                if (!apiStr.Equals(string.Empty))
                 {
-                    // This is a useful place to insert a breakpoint and observe the error message
-                    Console.WriteLine(e.Message);
+                    // JsonConvert is part of the NewtonSoft.Json Nuget package
+                    image = JsonConvert.DeserializeObject<ImageOfTheDay>(apiStr);
+                    dbContext.Image.Add(image);
+                    await dbContext.SaveChangesAsync();
                 }
+
+            }
+            catch (Exception e)
+            {
+                // This is a useful place to insert a breakpoint and observe the error message
+                Console.WriteLine(e.Message);
             }
             GetTitles(image, dbContext);
             return View(image);
