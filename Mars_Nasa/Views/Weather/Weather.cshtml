@@ -1,4 +1,4 @@
-﻿@model ChartModel
+﻿@model Weather
 @{
     ViewData["Title"] = "Mars Weather";
 }
@@ -9,11 +9,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <link rel="stylesheet" type="text/css" href="css/site.css">
 </head>
 
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <div class="container">
         <div class="topnav">
             @Html.ActionLink("Home", "Index", "Home")
@@ -21,29 +20,54 @@
             <a class="active">Mars Weather</a>
             @Html.ActionLink("About", "About", "About")
         </div>
-        <div style="text-align: center;">
-            <br /> <br /> <br />
-            <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0' width='1024' height='600'></iframe>
-            <br /> <br />
+        <br /><br /><br />
+        <div class="grid-container">
+            <div class="grid-child">
+                <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0' width='900' height='600'></iframe>
+            </div>
+            <div class="grid-child">
+                @using (Html.BeginForm("Weather", "Weather", FormMethod.Post))
+                {
+                    <label for="datepicker" style="color:white; font-family: Arial, Helvetica, sans-serif; font-size:16px;">Historical Date Lookup:</label>
+                    @Html.EditorFor(model => model.DateData, new { htmlAttributes = new { @class = "datepicker" } })
+                    <input type="submit" value="Submit"/>
+                    <span style="color:white; padding-left:10px; font-family: Arial, Helvetica, sans-serif; font-size:16px;">
+                        Min: @Model.min_temp  |  Max: @Model.max_temp  |  Sunrise: @Model.sunrise  |  Sunset: @Model.sunset  |  Season: @Model.season
+                    </span>
+                }
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+                <script>
+                    $(function ()
+                    {
+                        $(".datepicker").datepicker({
+                            dateFormat: "YYYY-MM-DD",
+                            changeMonth: true,
+                            changeYear: true,
+                            minDate: new Date(2012, 8, 7),
+                            maxDate: new Date(2022, 3, 24),
+                        });
+                    });
+                </script>
+                <canvas id="line-chart"></canvas>
+            </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        <canvas id="line-chart"></canvas>
-        <br /> <br />  <br />
+        <br /><br /><br />
         <script>
         Chart.defaults.global.defaultFontColor = 'white';
         new Chart(document.getElementById("line-chart"), {
-            type: '@Model.ChartType',
+            type: '@Model.ChartModel.ChartType',
                 data: {
-                labels: [@Html.Raw(@Model.XLabels)],
+                labels: [@Html.Raw(@Model.ChartModel.XLabels)],
                 datasets: [{
                     label: "Low Temperature",
                     borderColor: "#3e95cd",
-                    data: [@Model.DataMin],
+                    data: [@Model.ChartModel.DataMin],
                     fill: false,
                 }, {
                     label: "High Temperature",
                     borderColor: "#c45850",
-                    data: [@Model.DataMax],
+                    data: [@Model.ChartModel.DataMax],
                     fill: false,
                 }
                 ]
@@ -51,7 +75,7 @@
             options: {
                 title: {
                     display: true,
-                    text: '@Model.Title'
+                    text: '@Model.ChartModel.Title'
                 },
                 responsive: false,
                 scales: {

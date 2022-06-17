@@ -21,10 +21,14 @@ img {
 }
 
 canvas {
-    padding: 0;
-    margin: auto;
-    display: block;
-    width: 1024px !important;
+    width: 1000px !important;
+    height: 560px !important;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
 }
 
 .topnav {

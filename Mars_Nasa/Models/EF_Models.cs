@@ -50,6 +50,13 @@ namespace MarsNasa.Models
 
         [NotMapped]
         public List<WeatherInfo> W { get; set; }
+
+        [NotMapped]
+        public DateTime DateData {get; set;}
+
+        [NotMapped]
+        public ChartModel ChartModel { get; set; }
+
     }
 
     public class WeatherInfo
