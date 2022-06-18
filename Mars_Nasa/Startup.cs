@@ -58,7 +58,7 @@ namespace MarsNasa
             {
                 routes.MapRoute(
               name: "default",
-              template: "{controller=Home}/{action=Index}/{id?}");
+              template: "{controller=MarsRoverImage}/{action=rovers}/{id?}");
             });
         }
     }

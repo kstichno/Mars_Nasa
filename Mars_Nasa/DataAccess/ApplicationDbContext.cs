@@ -10,5 +10,12 @@ namespace MarsNasa.DataAccess
     public DbSet<ImageOfTheDay> Image { get; set; }
 
     public DbSet<Weather> Weather { get; set; }
-  }
+
+    public DbSet<MarsRoverImage> RoverImage { get; set; }
+
+    public DbSet<MarsCamera> Camera { get; set; }
+
+    public DbSet<Photo> Photo { get; set; }
+
+    }
 }

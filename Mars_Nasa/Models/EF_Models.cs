@@ -80,4 +80,8 @@ namespace MarsNasa.Models
         public string DataMax { get; set; }
         public string Title { get; set; }
     }
+
+    
+
+   
 }

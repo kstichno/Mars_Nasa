@@ -1,0 +1,45 @@
+﻿@model MarsNasa.Models.MarsRoverImage
+@{
+    ViewData["Title"] = "Mars Rover Pictures";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <div class="topnav">
+            @Html.ActionLink("Home", "Index", "Home")
+            @Html.ActionLink("Astronomy Picture of the Day", "apod", "ImageOfDay")
+            @Html.ActionLink("Mars Weather", "Weather", "Weather")
+            @Html.ActionLink("EpicEarth", "EpicEarth","EpicEarth")
+            <a class="active">Mars Rover Pictures </a>
+            @Html.ActionLink("About", "About", "About")
+            
+        </div>
+        <div class="middle">
+            <info>
+                <label for="title">Select A Previous Day's Image</label>
+                <br />
+
+           
+                
+                <br /> <br />
+                Title: Titles <br /> <br /> 
+                Date: date <br /> <br />
+                Copyright ©: copyright <br /> <br />
+                Description: explanation <br /> <br /> <br />
+            </info>
+        </div>
+    </div>
+    <img src="@Model.photos[0].img_src" >
+    <div class="footer">USF MSBAIS, 2022.</div>
+    
+</body>
+
+</html>
