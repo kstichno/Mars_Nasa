@@ -92,26 +92,50 @@ canvas {
 
 .bio {
     position: absolute;
-    margin-left: 25%;
-    margin-right: 25%;
-    position: relative;
-    top: 5%;
-    width: 50%;
-    background-color: #555555;
-    color: white;
+    top: 2%;
+    width: 100%;
+    color: black;
+    text-shadow: 0px 0px 7px white;
+    background-image: url("https://apod.nasa.gov/apod/image/2206/StrawberrySupermoonfromChina.jpg");
+    background-color: #ffffff;
 }
 
-.about {
-    position: absolute;
-    top: 5%;
-    left: 25%;
-    width: 75%;
-    background-color: #555555;
-    color: white;
-    margin-left: 25%;
-    margin-right: 25%;
-}
+about {
+  position: absolute;
+  top: 2%;
+  width: 100%;
+  color: black;
+  text-shadow: 0px 0px 7px white;
+  background-image: url("https://apod.nasa.gov/apod/image/2206/StrawberrySupermoonfromChina.jpg");
+  background-color: #ffffff;
+  }
 
+  .about p {
+  position: static;
+  z-index: 2;
+  font-size: 20px;
+  text-align: center;
+  opacity: 1;
+  margin-left: 20%;
+  margin-right: 20%;
+  }
+
+  .about h1 {
+  position: static;
+  z-index: 2;
+  font-size: 50px;
+  text-align: center;
+  opacity: 1;
+  }
+
+  .about h2 {
+  position: static;
+  z-index: 2;
+  font-size: 24px;
+  text-align: center;
+  opacity: 1;
+  }
+ 
 .footer {
     position: fixed;
     left: 0;
