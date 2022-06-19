@@ -57,6 +57,12 @@
             </info>
         </div>
     </div>
+    @{
+        if (Model.hdurl == null || Model.hdurl == string.Empty)
+        {
+            Model.hdurl = Model.url;
+        }
+    }
     <img src=@Model.hdurl>
     <div class="footer">USF MSBAIS, 2022.</div>
     

@@ -52,6 +52,11 @@ namespace MarsNasa.Controllers
                 {
                     // JsonConvert is part of the NewtonSoft.Json Nuget package
                     image = JsonConvert.DeserializeObject<ImageOfTheDay>(apiStr);
+                    if (image.hdurl == null || image.hdurl == string.Empty)
+                    {
+                        image.hdurl = image.url;
+                    }
+                    
                     dbContext.Image.Add(image);
                     await dbContext.SaveChangesAsync();
                 }
