@@ -19,17 +19,32 @@
             @Html.ActionLink("EpicEarth", "EpicEarth", "EpicEarth")
             @Html.ActionLink("Mars Rover Pictures", "Rovers" , "MarsRoverImage")
             <a class="active">About</a>
+
+            <select id="page" onchange="doNavigate()"> 
+                <option value="" selected="selected">Select</option> 
+                <option value="@Url.Action("Index", "Home")">Home</option> 
+                <option value="@Url.Action("apod", "ImageOfDay")">Astronomy Picture of the Day</option> 
+                <option value="@Url.Action("Weather", "Weather")">Mars Weather</option> 
+                <option value="@Url.Action("EpicEarth", "EpicEarth")">Epic Earth</option> 
+                <option value="@Url.Action("Rovers" , "MarsRoverImage")">Mars Rover Pictures</option>
+                <option value="@Url.Action("About", "About")">About</option> 
+            </select> 
+            <script>
+                function doNavigate() {
+                window.location.href = document.getElementById("page").value;
+            }
+            </script>
         </div>
-        <div class="middle">
+        <div style="margin-left:25%; margin-right:25%; color:white;">
 "           <br /><br />
-            <h1>Mission Statement</h1><br />
+            <h1>Mission Statement</h1>
             <p> At Ninja Kittens 501(C)3 we believe in equal access to STEM data for all. Our website is designed with our end-users in mind. 
                 Ninja Kittens in Space is an interactive web application where students interested in physics and astronomy can gain access to 
                 real-out-of-this-world NASA data. Here you’ll find the astronomy picture of the day, complete with supporting information, 
                 as well as Mars weather and climate data from the Curiosity Rover at Gale Crater. We hope Ninja Kittens in Space is only the 
-                beginning of your voyage.</p><br /><br />
-            <h1>Ninja Kittens bios:</h1><br />
-             <h2>Ruslan Dubas</h2><br />
+                beginning of your voyage.</p><br />
+            <h1>Ninja Kitten Bios:</h1>
+             <h2>Ruslan Dubas</h2>
              <p>Ruslan Dubas is a Commercial Field Appraiser for Sarasota County. He holds professional designation - Certified Florida Evaluator, 
                 by International Association of Assessing Officers (IAAO). He graduated from the University of South Florida with a Bachelor of 
                 Arts degree in International Studies.</p> 
@@ -37,9 +52,9 @@
                 He is pursuing MS of Business Analytics and Information Systems degree at University of South Florida. In the past, Ruslan worked 
                 for the Suncoast Credit Union as Bankruptcy Litigation Assistant. While working for the Suncoast CU, he became Certified Financial 
                 Counselor designee by Credit Union National Association (CUNA).</p>
-             <p>Ruslan is passionate about learning computer programming and data manipulation knowhow. He is an aspiring Data Architect.</p>    
-             <p>In his free time he enjoys playing the harmonica, folding origami, and running on the beach. </p><br />
-             <h2>Bhargavi Kambala</h2><br />
+             <p>Ruslan is passionate about learning computer programming and data manipulation know-how. He is an aspiring Data Architect.  
+                In his free time he enjoys playing the harmonica, folding origami, and running on the beach. </p><br />
+             <h2>Bhargavi Kambala</h2>
              <p>Bhargavi Kambala is currently working as a  senior data Engineer at Raymond James Financials and  has been part of major technology 
                 implementations in the areas of Sales Practices and Suitability, Suspicious Transactions monitoring, Client Risk scoring and 
                 Financial Advisors Surveillance. She lead the designing and engineering aspect of the data sourcing and played a key role in 
@@ -55,7 +70,7 @@
              <p>She attended University of Madras, India and received Bachelor in Engineering in Mechanical and Post Graduate diploma in Human Resource 
                 management  degree with Indira Gandhi University, India. </p>
              <p>During her free time she loves to read  books , garden ,travel and practice yoga</p><br />
-             <h2>Diana Sanchez-Montenegro</h2><br />
+             <h2>Diana Sanchez-Montenegro</h2>
              <p>Diana Sanchez-Montenegro has a Bachelors degree in Business Administration from Universidad Nacional Autonoma de Mexico. She also 
                 has Scrum Master and Business Relationship Management certifications. She started working in Citigroup in operations holding different roles 
                 from reconciliations, investigations, asset services, client services, risk, control and compliance and Agency and trust. For the last 20 
@@ -65,18 +80,25 @@
              <p>Diana has been a champion of Engineering excellence since 2016 when it was launched at Citi ICG. It is a program designed to implement best 
                 practices in Technology. She is the coordinator for North America for Enterprise effectiveness training, and aslo a trainer and a trainer of trainers. 
                 This is a two day class aim to develop the skills required for career development.</p><br />
-             <h2>Charles Schretzman</h2><br />
+             <h2>Charles Schretzman</h2>
              <p>Charles "Zack" Schretzman graduated from the United States Military Academy at West Point with a Bachelor of Science in Management. Upon graduation, 
                 Zack served as an Army communications officer for 7 years, ending his service as the 83D Chemical Battalion Signal Officer while located at Fort 
                 Stewart, GA. Zack currently is enrolled as a Military Officer Leadership Program (MOLP) participant at Citi Group in Tampa, FL. Zack's current rotation 
                 in the program has him working with business and data analysts in the Citi Shared Services Strategy and Reengineering team. Zack will serve the remainder 
                 of his MOLP (2 year program) in the EO&T and will complete three eight month rotations. </p><br />
-            <h2>Kevin Stichnot</h2><br />
-            <p>Kevin Stichnot is an engineering manager at a Fortune 100 company overseeing the Integrated Supply Chain Engineering team, guiding critical analysis of defect data to assess cost of poor quality and implement corrective actions. He has over 15 years of experience in engineering disciplines spanning from low-level software development to printed circuit board design. Most recently, Kevin has ventured into Industrial Internet of Things and Industry 4.0 technologies.  </p>
-             <p>Kevin received his Bachelor of Science in Electrical and Electronics Engineering from the University of South Florida (USF) in 2005. He then began his professional career at USF’s Center for Ocean Technology (COT) supporting a local startup biotech company under the Florida High Tech Corridor grant. During his time at COT Kevin focused on controls and opto-mechanical engineering, progressing to become the Research and Development manager supporting new product design and development. In the future Kevin aims to continue advancing in the fields of machine systems automation, Artificial Intelligence, and machine learning, always seeking to embrace disruptive technologies. </p>
-             <br /><br />
-             <h1>Resources</h1><br />
-             <p> The APIs used for this portal were taken from https://api.nasa.gov/ </p>
+            <h2>Kevin Stichnot</h2>
+            <p>Kevin Stichnot is a Sr Engineering Manager at a Fortune 100 company overseeing Automation and Digitization of Manufacturing Technologies, 
+               implementing automation and operational technology networking standards. He has over 15 years of experience in engineering disciplines spanning 
+               from low-level software development and printed circuit board design to managing multi-million dollar technology improvement projects. 
+               Most recently, Kevin has ventured into Industrial Internet of Things and Industry 4.0 technologies.  </p>
+            <p>Kevin received his Bachelor of Science in Electrical and Electronics Engineering from the University of South Florida (USF) in 2005. 
+               He then began his professional career at USF’s Center for Ocean Technology (COT) supporting a local startup biotech company under the 
+               Florida High Tech Corridor grant. During his time at COT Kevin focused on controls and opto-mechanical engineering, progressing to become 
+               the Research and Development manager supporting new product design and development. In the future Kevin aims to continue advancing in the 
+               fields of machine systems automation, Artificial Intelligence, and machine learning, always seeking to embrace disruptive technologies. </p>
+             <br />
+             <h1>Resources</h1>
+             <p> The APIs used for this portal are: https://api.nasa.gov/ and https://api.maas2.apollorion.com/</p>
              <br /><br />
         </div>
         <div class="footer">USF MSBAIS, 2022.</div>
