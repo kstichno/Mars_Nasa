@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/site.css">
 </head>
 
-<body>
+<body style="background-image: url();">
     <h1 style="color: pink; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 10px;">EpicEarth</h1>
 
     <div class="container">
@@ -27,43 +27,72 @@
 
 
         </div>
-        @*<div class="middle">
-                    <info>
-                        <label for="title">Select A Previous Day's Image</label>
-                        <br />
 
-                        @using (Html.BeginForm("APOD", "ImageOfDay", FormMethod.Post, new { @name = "Form1" }))
-                        {
-                            @Html.DropDownList("Id", new SelectList(Model.Titles, "Id", "Name"), "Please select", new { @id = "ddlTitles" })
-                            @Html.Hidden("Name", null, new { @id = "hfTitleName" })
-                        }
+		<script>					
+					var apiKey = 'ldD32JgpHGnzPJyxRttoohWCJw7xOM4nNMBK3A0Q'; 
 
-                        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-                        <script type="text/javascript">
-                        $("body").on("change", "#ddlTitles", function () {
-                        $("#hfTitleName").val($(this).find("option:selected").text());
-                        document.forms["Form1"].submit();
-                        });
-                        </script>
-                        @if (TempData["Message"] != null)
-                        {
-                            <script type="text/javascript">
-                                $(function () {
-                                    alert("@TempData["Message"]");
-                                });
-                            </script>
-                        }
+				      document.addEventListener('DOMContentLoaded', submitButtonsReady);
 
-                        <br /> <br />
-                        Title: @Model.title <br /> <br />
-                        Date: @Model.date <br /> <br />
-                        Copyright ©: @Model.copyright <br /> <br />
-                        Description: @Model.explanation <br /> <br /> <br />
-                    </info>
-                </div>
-            </div>*@
-        @*<img src=@Model.hdurl>*@
-        <div class="footer">USF MSBAIS, 2022.</div>
+				      function submitButtonsReady(){
+				        document.getElementById('dateInput').addEventListener('click', function(event){
+				          var request = new XMLHttpRequest();
+
+				          var date = document.getElementById('dateValue').value;
+				          var dateArray = date.split("-");
+				          var year = dateArray[0];
+				          var month = dateArray[1];
+				          var day = dateArray[2];
+
+				          request.open('GET', 'https://api.nasa.gov/EPIC/api/natural/date/' + date + '?api_key=' + apiKey, true);
+				          request.addEventListener('load',function(){
+				           if(request.status >= 200 && request.status < 400){
+
+				              var response = JSON.parse(request.responseText);
+
+				              if(typeof(response[0].image) === 'string')
+				              {
+				                document.getElementById('imageStatus').textContent = 'Found';
+				                document.getElementById('imageID').src = 'https://epic.gsfc.nasa.gov/archive/natural/' + year + '/' + month + '/' + day + '/jpg/' + response[0].image + '.jpg';
+				                document.getElementById('imageCaption').textContent = response[0].caption;
+				              }
+
+				            } 
+				            else 
+				            { 
+				                  console.log("Error in network request: " + request.statusText);
+
+				             }});
+				          document.getElementById('imageStatus').textContent = 'Please try a different date or check your syntax!';
+				          request.send(null);
+				          event.preventDefault();
+				        })
+
+				      }
+		
+				<center>	
+			      <h2>Image Result</h2>
+			        <span>Image Retrieval Status: </span><span id="imageStatus"></span>
+			        <br>
+			        <span>Image Caption: </span><span id="imageCaption"></span>
+			        <br>
+			        <br>
+			        <h2>EPIC Image</h2>
+			      <img style="background" id="imageID" src=""/>
+   				 </div>
+				<div>
+				<form>
+			      <fieldset>
+			        <legend>Date Input (YYYY-MM-DD)</legend>
+			        <label for="dateValue">Date: </label>
+			        <input type="text" name="dateValue" id="dateValue">
+			        <input type="submit" id="dateInput">
+			      </fieldset>
+			    </form>
+			    <div>
+			</div>
+					</p>
+	</center>
+					        <div class="footer">USF MSBAIS, 2022.</div>
 
 </body>
 

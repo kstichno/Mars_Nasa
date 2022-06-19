@@ -29,7 +29,7 @@ namespace MarsNasa.Controllers
 
 //namespace MarsNasa.Controllers
 //{
-//    public class ImageOfDayController : Controller
+//    public class EpicEarthController : Controller
 //    {
 //        HttpClient httpClient;
 
@@ -38,7 +38,7 @@ namespace MarsNasa.Controllers
 
 //        public ApplicationDbContext dbContext;
 
-//        public ImageOfDayController(ApplicationDbContext context)
+//        public EpicEarthController(ApplicationDbContext context)
 //        {
 //            dbContext = context;
 //        }
