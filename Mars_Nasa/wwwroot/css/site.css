@@ -90,17 +90,7 @@ canvas {
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
 
-.bio {
-    position: absolute;
-    top: 2%;
-    width: 100%;
-    color: black;
-    text-shadow: 0px 0px 7px white;
-    background-image: url("https://apod.nasa.gov/apod/image/2206/StrawberrySupermoonfromChina.jpg");
-    background-color: #ffffff;
-}
-
-about {
+.about {
   position: absolute;
   top: 2%;
   width: 100%;
