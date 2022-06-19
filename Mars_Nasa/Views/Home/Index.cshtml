@@ -19,6 +19,21 @@
             @Html.ActionLink("EpicEarth", "EpicEarth", "EpicEarth")
             @Html.ActionLink("Mars Rover Pictures", "Rovers" , "MarsRoverImage")
             @Html.ActionLink("About", "About", "About")
+
+            <select id="page" onchange="doNavigate()"> 
+                <option value="" selected="selected">Select</option> 
+                <option value="@Url.Action("Index", "Home")">Home</option> 
+                <option value="@Url.Action("apod", "ImageOfDay")">Astronomy Picture of the Day</option> 
+                <option value="@Url.Action("Weather", "Weather")">Mars Weather</option> 
+                <option value="@Url.Action("EpicEarth", "EpicEarth")">Epic Earth</option> 
+                <option value="@Url.Action("Rovers" , "MarsRoverImage")">Mars Rover Pictures</option>
+                <option value="@Url.Action("About", "About")">About</option> 
+            </select> 
+            <script>
+                function doNavigate() {
+                window.location.href = document.getElementById("page").value;
+            }
+            </script>
         </div>
         <div class="middle">
             <info>
