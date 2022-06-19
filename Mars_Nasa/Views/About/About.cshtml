@@ -18,6 +18,21 @@
             @Html.ActionLink("Mars Weather", "Weather", "Weather")
             @Html.ActionLink("EpicEarth", "EpicEarth", "EpicEarth")
             <a class="active">About</a>
+
+            <select id="page" onchange="doNavigate()"> 
+                <option value="" selected="selected">Select</option> 
+                <option value="@Url.Action("Index", "Home")">Home</option> 
+                <option value="@Url.Action("apod", "ImageOfDay")">Astronomy Picture of the Day</option> 
+                <option value="@Url.Action("Weather", "Weather")">Mars Weather</option> 
+                <option value="@Url.Action("EpicEarth", "EpicEarth")">Epic Earth</option> 
+                <option value="@Url.Action("Rovers" , "MarsRoverImage")">Mars Rover Pictures</option>
+                <option value="@Url.Action("About", "About")">About</option> 
+            </select> 
+            <script>
+                function doNavigate() {
+                window.location.href = document.getElementById("page").value;
+            }
+            </script>
         </div>
         <div class="about"><br />
             <h1>Mission Statement</h1><br />
@@ -25,9 +40,9 @@
                 Ninja Kittens in Space is an interactive web application where students interested in physics and astronomy can gain access to 
                 real-out-of-this-world NASA data. Here you’ll find the astronomy picture of the day, complete with supporting information, 
                 as well as Mars weather and climate data from the Curiosity Rover at Gale Crater. We hope Ninja Kittens in Space is only the 
-                beginning of your voyage.</p><br /><br />
-            <h1>Ninja Kittens bios:</h1><br />
-             <h2>Ruslan Dubas</h2><br />
+                beginning of your voyage.</p><br />
+            <h1>Ninja Kitten Bios:</h1>
+             <h2>Ruslan Dubas</h2>
              <p>Ruslan Dubas is a Commercial Field Appraiser for Sarasota County. He holds professional designation - Certified Florida Evaluator, 
                 by International Association of Assessing Officers (IAAO). He graduated from the University of South Florida with a Bachelor of 
                 Arts degree in International Studies.<br />
@@ -63,7 +78,7 @@
                 Diana has been a champion of Engineering excellence since 2016 when it was launched at Citi ICG. It is a program designed to implement best 
                 practices in Technology. She is the coordinator for North America for Enterprise effectiveness training, and aslo a trainer and a trainer of trainers. 
                 This is a two day class aim to develop the skills required for career development.</p><br />
-             <h2>Charles Schretzman</h2><br />
+             <h2>Charles Schretzman</h2>
              <p>Charles "Zack" Schretzman graduated from the United States Military Academy at West Point with a Bachelor of Science in Management. Upon graduation, 
                 Zack served as an Army communications officer for 7 years, ending his service as the 83D Chemical Battalion Signal Officer while located at Fort 
                 Stewart, GA. Zack currently is enrolled as a Military Officer Leadership Program (MOLP) participant at Citi Group in Tampa, FL. Zack's current rotation 

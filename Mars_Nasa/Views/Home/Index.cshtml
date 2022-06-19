@@ -19,10 +19,25 @@
             @Html.ActionLink("EpicEarth", "EpicEarth", "EpicEarth")
             @Html.ActionLink("Mars Rover Pictures", "Rovers" , "MarsRoverImage")
             @Html.ActionLink("About", "About", "About")
+
+            <select id="page" onchange="doNavigate()"> 
+                <option value="" selected="selected">Select</option> 
+                <option value="@Url.Action("Index", "Home")">Home</option> 
+                <option value="@Url.Action("apod", "ImageOfDay")">Astronomy Picture of the Day</option> 
+                <option value="@Url.Action("Weather", "Weather")">Mars Weather</option> 
+                <option value="@Url.Action("EpicEarth", "EpicEarth")">Epic Earth</option> 
+                <option value="@Url.Action("Rovers" , "MarsRoverImage")">Mars Rover Pictures</option>
+                <option value="@Url.Action("About", "About")">About</option> 
+            </select> 
+            <script>
+                function doNavigate() {
+                window.location.href = document.getElementById("page").value;
+            }
+            </script>
         </div>
         <div class="middle">
             <info>
-                <label for="title">Homepage</label>
+                <label for="title">Select a Tab to Explore Connected NASA API's to Learn More About Space!</label>
                 <br />
 
               
@@ -30,10 +45,31 @@
             
         </div> 
     </div>
-    <img src="img/ninja kittens in space.png" style="width:99%;padding-top:12%;padding-left:2px;padding-right:2px;">
+    <img src="img/ninja kittens in space.png" style="width:99%;padding-top:12%;padding-left:2px;padding-right:1px;">
    
+      <p style="color:pink;position: absolute;text-align: center; font-size: 22px; left: 53%;top:55%;transform:translate(-50%,-50%);padding:10px;background-color:black; opacity:75%"; >
+          But outer Space,<br />
+At least this far,<br />
+For all the fuss<br />
+Of the populace <br />
+Stays more popular<br />
+Than populous<br />
+<br />
+<em>-Robert Frost </em><br />
+<br />
+<br />
+<i>"It suddenly struck me that that tiny pea, <br />
+pretty and blue, was the Earth. <br />
+I put up my thumb and shut one eye, <br />
+and my thumb blotted out the planet Earth.<br />
+I didn't feel like a giant. <br />
+I felt very, very small."<br />
+</i><br />
+-Neil Armstrong<br />
+</p>
+
+
       
-   
     <div class="footer">USF MSBAIS, 2022.</div>
    
     
