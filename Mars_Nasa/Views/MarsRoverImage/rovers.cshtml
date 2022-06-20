@@ -38,40 +38,41 @@
         </div>
         <div class="middle">
             <info>
-             <input type = "text" id = "lbl1">0</input>
+            <select style="display: none;" id="lbl1" onchange="updatephoto(0)"> 
+                <option value="" selected="selected">0</option> 
+                <option value="">1</option>  
+                <option value="">2</option> 
+                <option value="">3</option> 
+            </select>
              <button id="prevsbtn" onclick="updatephoto(-1); return false;">Previous</button>
              <button id="nextbtn" onclick="updatephoto(1); return false;">Next</button>
              
              <script> 
-             function updatephoto(index) {
-             var i = document.getElementById('lbl1');
-             i = i+index;
-             document.getElementById('lbl1').innerHTML = i;
+             function updatephoto(val) {
+                var sb = document.getElementById('lbl1');
+                var nIndex = sb.selectedIndex + val;
+                if (nIndex < 0 || nIndex >= sb.length)
+                {
+                    nIndex = 0;
+                }
+                sb.selectedIndex = nIndex;
+                if (sb.selectedIndex == 0)  {
 
-             if (i>3 || i<0) 
-             {
-                 i=0;
-                 document.getElementById('lbl1').innerHTML = i;
-             }
-             if (i == 0)  {
+                    document.getElementById('pht1').src = "@Model.photos[0].img_src";
+                 }
+                 if (sb.selectedIndex == 1)  {
 
-                document.getElementById('pht1').src = "@Model.photos[0].img_src";
-             }
-                          if (i == 1)  {
+                    document.getElementById('pht1').src = "@Model.photos[1].img_src";
+                 }
+                 if (sb.selectedIndex == 2)  {
 
-                document.getElementById('pht1').src = "@Model.photos[1].img_src";
-             }
-                          if (i == 2)  {
+                    document.getElementById('pht1').src = "@Model.photos[2].img_src";
+                 }
+                 if (sb.selectedIndex == 3)  {
 
-                document.getElementById('pht1').src = "@Model.photos[2].img_src";
+                    document.getElementById('pht1').src = "@Model.photos[3].img_src";
+                 }
              }
-                          if (i == 3)  {
-
-                document.getElementById('pht1').src = "@Model.photos[3].img_src";
-             }
-             
-             }
-
              </script>
             </info>
         </div>
