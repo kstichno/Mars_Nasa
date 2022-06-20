@@ -18,8 +18,8 @@ namespace MarsNasa.Controllers
     {
         HttpClient httpClient;
 
-        static string BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=DEMO_KEY&earth_date=2015-6-3";
-        static string API_KEY = "&api_key=tJeW3Rn902fFaWsMj3Aid6x5W9vvsHlp6XsY7698";
+        static string BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?";
+        static string API_KEY = "api_key=tJeW3Rn902fFaWsMj3Aid6x5W9vvsHlp6XsY7698";
 
         public ApplicationDbContext dbContext;
 
@@ -34,7 +34,8 @@ namespace MarsNasa.Controllers
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Clear();
-            string url = BASE_URL;
+            string dateStr = "&earth_date=2015-6-30";
+            string url = BASE_URL + API_KEY + dateStr;
             string apiStr = "";
 
             httpClient.BaseAddress = new Uri(url);

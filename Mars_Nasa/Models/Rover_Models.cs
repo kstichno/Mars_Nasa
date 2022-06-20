@@ -8,6 +8,8 @@ namespace MarsNasa.Models
 
     public class MarsRoverImage
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int marsroverimageid { get; set; }
         public List<Photo> photos { get; set; }
 
@@ -16,11 +18,11 @@ namespace MarsNasa.Models
     
     public class Photo
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
         public int sol { get; set; }
         public MarsCamera marscamera { get; set; }
+        [Key] 
         public string img_src { get; set; }
         public string earth_date { get; set; }
         
