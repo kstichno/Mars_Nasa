@@ -99,7 +99,6 @@ canvas {
   background-image: url("https://apod.nasa.gov/apod/image/2206/StrawberrySupermoonfromChina.jpg");
   background-color: #ffffff;
   }
-
   .about p {
   position: static;
   z-index: 2;
