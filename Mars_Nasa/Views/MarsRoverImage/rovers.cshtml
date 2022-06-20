@@ -38,20 +38,45 @@
         </div>
         <div class="middle">
             <info>
-                <label for="title">Select A Previous Day's Image</label>
-                <br />
+             <input type = "text" id = "lbl1">0</input>
+             <button id="prevsbtn" onclick="updatephoto(-1); return false;">Previous</button>
+             <button id="nextbtn" onclick="updatephoto(1); return false;">Next</button>
+             
+             <script> 
+             function updatephoto(index) {
+             var i = document.getElementById('lbl1');
+             i = i+index;
+             document.getElementById('lbl1').innerHTML = i;
 
-           
-                
-                <br /> <br />
-                Title: Titles <br /> <br /> 
-                Date: date <br /> <br />
-                Copyright ©: copyright <br /> <br />
-                Description: explanation <br /> <br /> <br />
+             if (i>3 || i<0) 
+             {
+                 i=0;
+                 document.getElementById('lbl1').innerHTML = i;
+             }
+             if (i == 0)  {
+
+                document.getElementById('pht1').src = "@Model.photos[0].img_src";
+             }
+                          if (i == 1)  {
+
+                document.getElementById('pht1').src = "@Model.photos[1].img_src";
+             }
+                          if (i == 2)  {
+
+                document.getElementById('pht1').src = "@Model.photos[2].img_src";
+             }
+                          if (i == 3)  {
+
+                document.getElementById('pht1').src = "@Model.photos[3].img_src";
+             }
+             
+             }
+
+             </script>
             </info>
         </div>
     </div>
-    <img src="@Model.photos[0].img_src" >
+    <img id = "pht1" src="@Model.photos[0].img_src" >
     <div class="footer">USF MSBAIS, 2022.</div>
     
 </body>
